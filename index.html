@@ -1,6 +1,7 @@
 <html>
-    <head>
-        <script type="importmap">
+
+<head>
+    <script type="importmap">
             {
                 "imports": {
                     "react": "https://esm.sh/react@latest?dev",
@@ -9,27 +10,32 @@
             }
             }
         </script>
-        <script src="https://unpkg.com/@babel/standalone@latest/babel.min.js"></script>
-    </head>
-    <body>
-        <div id="app"></div>
-        <script type="text/babel" data-type="module" data-presets="react">
-            import react from 'react';
-            import {createRoot} from 'react-dom/client';
+    <script src="https://unpkg.com/@babel/standalone@latest/babel.min.js"></script>
+</head>
 
-            const domNode = document.getElementById('app');
+<body>
+    <div id="app"></div>
+    <script type="text/babel" data-type="module" data-presets="react">
+        import react from 'react';
+        import { createRoot } from 'react-dom/client';
 
-            function Header(){
-                return <h1>Develop. Preview. Ship</h1>
-            }
-            function HomePage (){
-                return <div>\
+        const domNode = document.getElementById('app');
+
+
+        function Header({ title }) {
+            console.log(title);
+            return <h1>{title? title : 'Default title'}</h1>
+        }
+        function HomePage() {
+            return <div>
                 {/* Nesting Header coponent */}
-                <header />
-                    </div>;
-            }   
-            const root = createRoot(domNode);
-            root.render(<HomePage />);
-        </script>
-    </body>
+                <Header title="React" />
+                <Header title="A new title" />
+            </div>;
+        }
+        const root = createRoot(domNode);
+        root.render(<HomePage />);
+    </script>
+</body>
+
 </html>
